@@ -27,7 +27,6 @@ tc filter add dev $if parent 1:0 prio 1 handle 3 fw flowid 1:12
 
 # - BE Class (2:3) 
 tc class add dev $if parent 1:1 classid 1:13 htb rate $be_rate ceil $ceiling
-
 tc qdisc add dev $if parent 1:13 red limit 60KB min 10KB max 45KB \
 burst 20 avpkt 1000 bandwidth 1Mbit probability 0.01
 tc filter add dev $if parent 1:0 protocol ip prio 2 u32 match ip dst 0.0.0.0/0 flowid 1:13
