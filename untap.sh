@@ -1,5 +1,4 @@
-# Script to tap IPv4 traffic to & from the public address assigned to the Residential Gateway
-# Assumes a GRE tunnel to $DEST_IP 
+# Script to un_tap IPv4 traffic previously added with tap.sh
 
 IP_to_tap=$1
 DEST_IP=$2
