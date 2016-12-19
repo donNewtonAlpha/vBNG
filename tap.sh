@@ -1,3 +1,4 @@
+#!/bin/bash
 # Script to tap IPv4 traffic to & from the public address assigned to the Residential Gateway
 # Assumes a GRE tunnel to $DEST_IP 
 

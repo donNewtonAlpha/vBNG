@@ -1,3 +1,4 @@
+#!/bin/bash
 # Script to un_tap IPv4 traffic previously added with tap.sh
 
 IP_to_tap=$1
