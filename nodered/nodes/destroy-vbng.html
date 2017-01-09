@@ -1,0 +1,77 @@
+<script type="text/javascript">
+    RED.nodes.registerType('destroy-vbng',{
+        category: 'd2',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+            Hostname: {value:"vbng-00"},
+            IpSubnet: {value:"10.20.1.50/24"},
+            VxlanVni: {value:"5050"},
+            VxlanEndpoint: {value:"10.20.1.253"},
+            HostedGateway: {value:"20.20.0.1"},
+            Route: {value:"2.2.0.0/16"},
+            NextHop: {value:"10.20.1.100"},
+            PoliceRate: {value:"500mbit"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.Name||"destroy-vbng";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="destroy-vbng">
+    <div class="form-row">
+        <label for="node-input-Name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-Hostname"><i class="icon-tag"></i> Hostname</label>
+        <input type="text" id="node-input-Hostname" placeholder="Hostname">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-IpSubnet"><i class="icon-tag"></i> IP Address/Subnet Mask</label>
+        <input type="text" id="node-input-IpSubnet" placeholder="192.168.1.1/24">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-VxlanVni"><i class="icon-tag"></i> VXLAN VNI</label>
+        <input type="text" id="node-input-VxlanVni" placeholder="5050">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-VxlanEndpoint"><i class="icon-tag"></i> VXLAN Remote Endpoint</label>
+        <input type="text" id="node-input-VxlanEndpoint" placeholder="10.10.10.10">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-HostedGateway"><i class="icon-tag"></i> Hosted BNG Gateway</label>
+        <input type="text" id="node-input-HostedGateway" placeholder="20.20.0.1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-Route"><i class="icon-tag"></i> Northbound Route/mask</label>
+        <input type="text" id="node-input-Route" placeholder="0.0.0.0/0">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-NextHop"><i class="icon-tag"></i> Northbound Route Next Hop</label>
+        <input type="text" id="node-input-NextHop" placeholder="10.10.10.1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-PoliceRate"><i class="icon-tag"></i> Southbound Maximum Policer Rate</label>
+        <input type="text" id="node-input-PoliceRate" placeholder="500mbit">
+    </div>
+
+
+</script>
+
+<script type="text/x-red" data-help-name="destroy-vbng">
+    <p>Destroy vBNG environment within a running container</p>
+</script>
+

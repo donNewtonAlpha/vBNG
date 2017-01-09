@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('assign-interface',{
+        category: 'd2',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+            Hostname: {value:"vbng-00"},
+            SrIovInterface: {value:"p1p1_0"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.Name||"assign-interface";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="assign-interface">
+    <div class="form-row">
+        <label for="node-input-Name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Hostname"><i class="icon-tag"></i> Hostname</label>
+        <input type="text" id="node-input-Hostname" placeholder="Hostname">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-Interface"><i class="icon-tag"></i> SRIOV VF Inferface</label>
+        <input type="text" id="node-input-SrIovInterface" placeholder="SrIovInterface">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="assign-interface">
+    <p>Assign an SR-IOV VF interface to an LXC container</p>
+</script>
+

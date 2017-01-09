@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('host',{
+        category: 'd2',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+            Action: {value:"list-containers"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.Name||"host";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="host">
+    <div class="form-row">
+        <label for="node-input-Name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Action"><i class="icon-tag"></i> Action</label>
+        <input type="text" id="node-input-Action" placeholder="Action">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="host">
+    <p>Query/Run commands on an LXC host</p>
+</script>
+

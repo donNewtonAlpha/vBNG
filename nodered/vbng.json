@@ -1,0 +1,15 @@
+{
+  "Hostname": "vbng-02",
+  "Template": "bng-template-v2",
+  "SrIovInterface": "p1p1_0",
+  "SouthIpSubnet": "10.20.1.2/24",
+  "SouthGateway": "10.20.1.1",
+  "VxlanLoopback": "10.50.1.2",
+  "VxlanVni": "5002",
+  "VxlanEndpoint": "10.50.1.1",
+  "HostedGateway": "20.20.0.1",
+  "NorthIpSubnet": "10.30.1.2/24",
+  "NorthGateway": "10.30.1.1",
+  "PoliceRate": "4000mbit"
+}
+

@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('del-vlan',{
+        category: 'd2',
+        color: '#E9967A',
+        defaults: {
+            name: {value:""},
+            container:{value:""},
+            url:{value:""},
+            vlan: {value:"3"}
+        },
+        inputs:1,
+        outputs:3,
+        icon: "bridge-dash.png",
+        label: function() {
+            return this.name||"del-vlan";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="del-vlan">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-container"><i class="icon-tag"></i>Container</label>
+        <input type="text" id="node-input-container" placeholder="hostname">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="icon-tag"></i>URL</label>
+        <input type="text" id="node-input-url" placeholder="http://ip:port/callback">
+    </div>
+    <div class="form-row">
+        <label for="node-input-vlan"><i class="icon-tag"></i>Vlan</label>
+        <input type="number" id="node-input-vlan" min="2" max="4095" placeholder="3">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="del-vlan">
+    <p>This node takes a vlan and IP delress, creates a vlan interfaces and adds a route to the IP on the vlan</p>
+    <p>Inputs:
+        <ul>
+          <li><code>container</code>The LXC container name to provision
+          <li><code>url</code>The REST url to post status updates to
+          <li><code>vlan</code>The vlan-id of the customer
+        </ul>
+    </p>
+    <p>Ouputs:
+        <ul>
+          <li>Returns status of parsing json should be wired to <code>http response</code></li>
+          <li>Passes input json along to next node for processing once work is done</li>
+          <li>Used to send current status to <code>url</code></li>
+        </ul>
+    <p>
+</script>
+

@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('init-container',{
+        category: 'd2',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+            Hostname: {value:"vbng-00"},
+            Template: {value:"bng-template"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.Name||"init-container";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="init-container">
+    <div class="form-row">
+        <label for="node-input-Name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Hostname"><i class="icon-tag"></i> Hostname</label>
+        <input type="text" id="node-input-Hostname" placeholder="Hostname">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Template"><i class="icon-tag"></i> Template</label>
+        <input type="text" id="node-input-Template" placeholder="Template">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="init-container">
+    <p>Create a new container from an existing container (template)</p>
+</script>
+

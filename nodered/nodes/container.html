@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('container',{
+        category: 'd2',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+            Hostname: {value:"vbng-00"},
+            Action: {value:"start"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.Name||"container";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="container">
+    <div class="form-row">
+        <label for="node-input-Name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Hostname"><i class="icon-tag"></i> Hostname</label>
+        <input type="text" id="node-input-Hostname" placeholder="Hostname">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Action"><i class="icon-tag"></i> Action</label>
+        <input type="text" id="node-input-Action" placeholder="Action">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="container">
+    <p>Start/Stop/Destroy a container</p>
+</script>
+
