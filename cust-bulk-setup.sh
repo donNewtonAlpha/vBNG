@@ -32,7 +32,7 @@ do
    #TODO:  gotta be an easier way...
    #vtysh -c "conf t" -c "ip route ${ip}/32 ${vif}" -c "end" 
 
-   sh shaper.sh $vif 5mbit
+   sh shaper.sh $vif 5mbit 5mbit 200kbit 50kbit 10kbit
 
 done
 
