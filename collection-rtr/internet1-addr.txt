@@ -1,0 +1,39 @@
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet 10.50.1.10/32 scope global lo
+       valid_lft forever preferred_lft forever
+    inet6 2001:1890:1c03:abcd:50:10::/128 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: somewhere: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/ether 3a:d7:3d:87:be:18 brd ff:ff:ff:ff:ff:ff
+    inet 2.2.0.2/16 scope global somewhere
+       valid_lft forever preferred_lft forever
+    inet6 8989::1/64 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::38d7:3dff:fe87:be18/64 scope link 
+       valid_lft forever preferred_lft forever
+70: eth0@if71: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:37:bd:6f brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.64.1.156/24 brd 10.64.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::216:3eff:fe37:bd6f/64 scope link 
+       valid_lft forever preferred_lft forever
+72: eth1@if73: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc noqueue state UP group default qlen 1000
+    link/ether 2a:fc:01:f3:2f:75 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.40.3.0/31 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::28fc:1ff:fef3:2f75/64 scope link 
+       valid_lft forever preferred_lft forever
+74: eth2@if75: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc noqueue state UP group default qlen 1000
+    link/ether 2a:c5:25:14:01:89 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.40.5.0/31 scope global eth2
+       valid_lft forever preferred_lft forever
+    inet6 2001:1890:1c03:abcd:40:5::/127 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::28c5:25ff:fe14:189/64 scope link 
+       valid_lft forever preferred_lft forever
+
