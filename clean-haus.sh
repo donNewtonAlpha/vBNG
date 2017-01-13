@@ -20,8 +20,8 @@ ip link set $bridge down
 brctl delbr $bridge
 ip link del $vxlan
 
-ip addr flush $phy
-ip addr flush $uplinkphy
+#ip addr flush $phy
+#ip addr flush $uplinkphy
 
-ip addr del 20.20.0.1/32 dev lo
-ip addr del 10.50.1.2/32 dev lo
+#ip addr del 20.20.0.1/32 dev lo
+#ip addr del 10.50.1.2/32 dev lo

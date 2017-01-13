@@ -1,0 +1,26 @@
+
+# southbound to underlay.  ospf runs here
+auto eth1
+iface eth1 inet static
+  address 10.10.2.2
+  netmask 255.255.255.0
+  mtu 9216
+
+# northbound to internet and services.  bgp runs here, learned default route
+auto eth2
+iface eth2 inet static
+  address 10.40.1.2
+  netmask 255.255.255.0
+  mtu 9216
+
+# loopback for services
+auto lo:1
+iface lo:1 inet static
+  address 10.50.1.3
+  netmask 255.255.255.255
+
+# loopback for bng unnumbered route
+auto lo:2
+iface lo:2 inet static
+  address 20.20.0.1
+  netmask 255.255.255.255
