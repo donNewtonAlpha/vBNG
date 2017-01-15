@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# example:  ./vbng-setup-vxlan2.sh 5002 10.50.1.1 eth2 2500mbit
+# example:  ./vbng-setup-vxlan.sh 5002 10.50.1.1 eth2 2500mbit
 #
 #
 
@@ -20,15 +20,15 @@ fi
 
 set -x
 
-bridge=access
+#bridge=access
 vxlan=vx${vni}
 
-brctl addbr $bridge
+#brctl addbr $bridge
 ip link add $vxlan type vxlan id $vni local $vxlanlocal remote $vxlanremote dstport 4789 tos inherit
 ip link set ${vxlan} mtu 9216
 ip link set $vxlan up
-brctl addif $bridge $vxlan
-ip link set $bridge up
+#brctl addif $bridge $vxlan
+#ip link set $bridge up
 
 tc qdisc add dev $uplinkphy handle ffff: ingress
 tc filter add dev $uplinkphy parent ffff: protocol ip prio 4 u32 \
