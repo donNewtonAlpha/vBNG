@@ -2,33 +2,33 @@
 # southbound to underlay.  ospf runs here
 auto eth1
 iface eth1 inet static
-  address 10.10.2.2
-  netmask 255.255.255.0
+  address %SOUTH_IP%
+  netmask %SOUTH_MASK%
   mtu 9216
 
 # northbound to internet and services.  bgp runs here, learned default route
 auto eth2
 iface eth2 inet static
-  address 10.40.1.2
-  netmask 255.255.255.0
+  address %NORTH_IP%
+  netmask %NORTH_MASK%
   mtu 9216
-  post-up /usr/local/bin/policer.sh eth2 5000mbit 0
+  post-up /usr/local/bin/policer.sh eth2 %POLICE_RATE% 0
 
 # loopback for services
 auto lo:1
 iface lo:1 inet static
-  address 10.50.1.3
+  address %SVC_IP%
   netmask 255.255.255.255
 
 # loopback for bng unnumbered route
 auto lo:2
 iface lo:2 inet static
-  address 29.29.0.1
+  address %GATEWAY_IP%
   netmask 255.255.255.255
 
 # bridge for access vlans, vxlan interface, marking and policing.
 auto access
 iface access inet manual
-  bridge_ports vx5003
-  pre-up /usr/local/bin/vbng-setup-vxlan.sh 5003 10.50.1.3 10.50.1.1 eth2 2500mbit
-  pre-down /usr/local/bin/vbng-destroy-vxlan.sh 5003 eth2
+  bridge_ports %VX_INF%
+  pre-up /usr/local/bin/vbng-setup-vxlan.sh %VNI% %SVC_IP% %REMOTE_VTEP_IP% eth2 
+  pre-down /usr/local/bin/vbng-destroy-vxlan.sh %VNI% eth2

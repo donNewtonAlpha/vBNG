@@ -1,0 +1,9 @@
+auto access.%VLAN%
+iface access.%VLAN% inet static
+  vlan_raw_device access
+  address %GATEWAY_IP%
+  netmask 255.255.255.255
+  post-up /usr/local/bin/vlan-setup.sh access %VLAN% %SHAPE_RATE%
+  up ip route add %CUSTOMER_IP%/32 dev access.%VLAN% src %GATEWAY_IP%
+# TODO: this route needs to be added by the DHCP server on address assignment.
+# TODO: the shaper profile needs to be added at DHCP assignment time from RADIUS.
