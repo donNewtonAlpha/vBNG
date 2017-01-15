@@ -8,12 +8,17 @@ ef_rate=$4
 af_rate=$5
 be_rate=$6
 
-tc qdisc delete dev $if root
+if [ -z "$if" ] || [ -z "$ceiling" ] || [ -z "$main_rate" ] || [ -z "$ef_rate" ] || [ -z "$af_rate" ] || [ -z "$be_rate" ]
+then
+  echo "Usage $0 <southbound-interface> <max-bandwidth> <total-shaped-bw> <ef-guaranteed-bw> <af-guaranteed-bw> <be-guaranteed-bw>" 1>&2
+  exit 1
+fi
+
+set -x
 
 # - Main htb qdisc & class
 tc qdisc add dev $if handle 1:0 root htb
 tc class add dev $if parent 1:0 classid 1:1 htb rate $main_rate ceil $ceiling
-
 
 # - EF Class (2:1)
 tc class add dev $if parent 1:1 classid 1:11 htb rate $ef_rate ceil $ceiling

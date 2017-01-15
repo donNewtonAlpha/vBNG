@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# example:  ./vbng-setup-vxlan.sh 5002 10.50.1.1 eth2 2500mbit
+# example:  ./vbng-setup-vxlan.sh 5002 10.50.1.3 10.50.1.1 eth2
 #
 #
 
@@ -11,30 +11,20 @@ vxlanremote=${3}
 uplinkphy=${4}
 policerate=${5}
 
-if [ -z "$vni" ] || [ -z "$vxlanlocal" ] || [ -z "$vxlanremote" ] || [ -z "$uplinkphy" ] || [ -z "$policerate" ]
+if [ -z "$vni" ] || [ -z "$vxlanlocal" ] || [ -z "$vxlanremote" ] || [ -z "$uplinkphy" ]
 then
-  echo "Usage $0 <vxlan-vni> <vxlan-local-ip> <vxlan-remote-ip> <uplink-phy> <southbound-police-rate>" 1>&2
+  echo "Usage $0 <vxlan-vni> <vxlan-local-ip> <vxlan-remote-ip> <uplink-phy>" 1>&2
   exit 1
 fi
 
 
 set -x
 
-#bridge=access
 vxlan=vx${vni}
 
-#brctl addbr $bridge
 ip link add $vxlan type vxlan id $vni local $vxlanlocal remote $vxlanremote dstport 4789 tos inherit
 ip link set ${vxlan} mtu 9216
 ip link set $vxlan up
-#brctl addif $bridge $vxlan
-#ip link set $bridge up
-
-tc qdisc add dev $uplinkphy handle ffff: ingress
-tc filter add dev $uplinkphy parent ffff: protocol ip prio 4 u32 \
-   match ip tos 0x00 0xfc \
-   police rate $policerate burst 1mbit \
-   drop flowid 0:3
 
 
 ###

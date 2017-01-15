@@ -12,6 +12,7 @@ iface eth2 inet static
   address 10.40.1.2
   netmask 255.255.255.0
   mtu 9216
+  post-up /usr/local/bin/policer.sh eth2 5000mbit 0
 
 # loopback for services
 auto lo:1
