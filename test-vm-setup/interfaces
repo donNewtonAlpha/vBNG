@@ -10,3 +10,5 @@ iface lo inet loopback
 # The primary network interface
 auto eth0
 iface eth0 inet dhcp
+  up ip route add 10.64.10.0/24 via 10.64.1.254
+  up ip route add 10.64.11.0/24 via 10.64.1.254
