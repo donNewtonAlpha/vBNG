@@ -1,9 +1,6 @@
-
 # southbound to underlay.  ospf runs here
 auto eth1
-iface eth1 inet static
-  address %SOUTH_IP%
-  netmask %SOUTH_MASK%
+iface eth1 inet manual
   mtu 9216
 
 # northbound to internet and services.  bgp runs here, learned default route
@@ -26,9 +23,9 @@ iface lo:2 inet static
   address %GATEWAY_IP%
   netmask 255.255.255.255
 
-# bridge for access vlans, vxlan interface, marking and policing.
+# bridge for access vlans, s-vlans, marking and policing.
 auto access
 iface access inet manual
-  bridge_ports %VX_INF%
-  pre-up /usr/local/bin/vbng-setup-vxlan.sh %VNI% %SVC_IP% %REMOTE_VTEP_IP% eth2 
-  pre-down /usr/local/bin/vbng-destroy-vxlan.sh %VNI% eth2
+  bridge_ports eth1
+  post-up /usr/local/bin/vbng-setup-marker.sh eth1 eth2
+

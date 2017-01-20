@@ -1,0 +1,9 @@
+auto access.2.2
+iface access.2.2 inet static
+  vlan_raw_device access.2
+  address 20.20.0.1
+  netmask 255.255.255.255
+  post-up /usr/local/bin/vlan-setup.sh access.2.2 25mbit
+  up ip route add 20.20.0.2/32 dev access.2.2 src 20.20.0.1
+# TODO: this route needs to be added by the DHCP server on address assignment.
+# TODO: the shaper profile needs to be added at DHCP assignment time from RADIUS.

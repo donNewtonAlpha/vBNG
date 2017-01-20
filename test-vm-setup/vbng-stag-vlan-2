@@ -1,0 +1,4 @@
+auto access.2
+iface access.2 inet manual
+  post-up /usr/local/bin/vbng-setup-stag.sh access 2
+  post-down /usr/local/bin/vbng-destroy-stag.sh access 2

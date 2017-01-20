@@ -1,0 +1,4 @@
+auto access.%SVLAN_ID%
+iface access.%SVLAN_ID% inet manual
+  post-up /usr/local/bin/vbng-setup-stag.sh access %SVLAN_ID%
+  post-down /usr/local/bin/vbng-destroy-stag.sh access %SVLAN_ID% 
