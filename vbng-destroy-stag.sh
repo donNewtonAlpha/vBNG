@@ -14,7 +14,6 @@ then
   exit 1
 fi
 
-set -x
 
 # TODO: hackjob for 802.1ad
 ip link set ${phy}.${stag} down

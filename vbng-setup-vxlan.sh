@@ -18,7 +18,6 @@ then
 fi
 
 
-set -x
 
 vxlan=vx${vni}
 

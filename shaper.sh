@@ -14,8 +14,6 @@ then
   exit 1
 fi
 
-set -x
-
 # - Main htb qdisc & class
 tc qdisc add dev $if handle 1:0 root htb
 tc class add dev $if parent 1:0 classid 1:1 htb rate $main_rate ceil $ceiling

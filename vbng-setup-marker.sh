@@ -15,8 +15,6 @@ then
 fi
 
 
-set -x
-
 
 
 ###

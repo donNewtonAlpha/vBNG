@@ -12,7 +12,6 @@ then
 fi
 
 
-set -x
 
 tc qdisc add dev $uplinkphy handle ffff: ingress
 tc filter add dev $uplinkphy parent ffff: protocol ip prio 4 u32 \

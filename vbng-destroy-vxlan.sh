@@ -15,7 +15,6 @@ then
 fi
 
 
-set -x
 
 bridge=access
 vxlan=vx${vni}
