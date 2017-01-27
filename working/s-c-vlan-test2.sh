@@ -7,14 +7,14 @@ fourth=2
 
 #set -x
 
-for i in $(seq 2 11)
+for i in $(seq 2 2)
 do
 
   cat ~/vBNG/template/01-vbng-stag-vlan-X \
   | sed s/%SVLAN_ID%/${i}/g \
   > /etc/network/interfaces.d/01-vbng-stag-vlan-${i}
 
-  for j in $(seq 2 51)
+  for j in $(seq 2 5)
   do
     if  [ $fourth -gt 255 ]
     then

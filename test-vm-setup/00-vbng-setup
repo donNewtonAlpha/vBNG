@@ -15,7 +15,7 @@ iface eth2 inet static
 # loopback for services
 auto lo:1
 iface lo:1 inet static
-  address 10.50.1.3
+  address 10.50.1.2
   netmask 255.255.255.255
 
 # loopback for bng unnumbered route

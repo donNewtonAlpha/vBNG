@@ -1,0 +1,5 @@
+auto access.2
+iface access.2 inet manual
+#  vlan_raw_device access
+  post-up /usr/local/bin/vbng-setup-stag.sh access 2
+  post-down /usr/local/bin/vbng-destroy-stag.sh access 2 
